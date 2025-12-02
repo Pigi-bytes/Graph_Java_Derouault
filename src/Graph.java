@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Graph {
@@ -57,18 +58,50 @@ public class Graph {
 
     public String toEdgeListString() {
         String chaine = "";
+        Set<Node> nodesInEdges = new HashSet<>();
+
         for (Edge edge : this.edges) {
-            chaine += edge.getSource().getLabel() + " " + edge.getDestination().getLabel() + " " + edge.getWeight() + "\n";
+            Node source = edge.getSource();
+            Node destination = edge.getDestination();
+
+            nodesInEdges.add(source);
+            nodesInEdges.add(destination);
+
+            chaine += source + " " + destination + " " + edge.getWeight() + "\n";
+        }
+
+        for (Node node : this.nodes) {
+            if (!nodesInEdges.contains(node)) {
+                chaine += node + "\n";
+            }
         }
         return chaine;
-    }
-
-    public String toString() {
-        return toAdjacencyListString();
     }
 
     public boolean getEstOriente() {
         return estOriente;
     }
-   
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nodes, edges, estOriente);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        
+        Graph other = (Graph) obj;
+        
+        return estOriente == other.estOriente &&
+            Objects.equals(nodes, other.nodes) &&
+            Objects.equals(edges, other.edges);
+    }
+
+    @Override
+    public String toString() {
+        return "Graph [nodes=" + nodes + ", edges=" + edges + ", estOriente=" + estOriente + "]";
+    }
+    
 }
