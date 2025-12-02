@@ -66,4 +66,9 @@ public class Graph {
     public String toString() {
         return toAdjacencyListString();
     }
+
+    public boolean getEstOriente() {
+        return estOriente;
+    }
+   
 }
