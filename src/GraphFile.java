@@ -20,12 +20,10 @@ public class GraphFile {
 
         boolean estOriente;
         int orientationInt = Integer.parseInt(config[1]);
-        if (orientationInt == 1) {
-            estOriente = true;
-        } else if (orientationInt == 0) {
-            estOriente = false;
-        } else {
-            throw new IOException("Format orienté doit etre 1 ou 0");
+        switch (orientationInt) {
+            case 1 -> estOriente = true;
+            case 0 -> estOriente = false;
+            default -> throw new IOException("Format orienté doit etre 1 ou 0");
         }
 
         Graph graph = new Graph(estOriente);

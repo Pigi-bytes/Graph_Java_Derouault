@@ -11,17 +11,20 @@ public class Node {
         return label;
     }
 
+    @Override
     public String toString() {
         return label;
     }
 
+    @Override
     public boolean equals(Object otherNode) {
         if (this == otherNode) return true; 
-        if (otherNode == null) return false;
+        if (otherNode == null || getClass() != otherNode.getClass()) return false;
         Node node = (Node) otherNode;
         return Objects.equals(label, node.label);
     }
 
+    @Override
     public int hashCode() {
         return Objects.hash(label);
     }
