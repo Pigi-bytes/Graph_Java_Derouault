@@ -56,7 +56,16 @@ public class Graph {
         
         nodes.remove(node);
     }
-    
+
+    public void removeNode(String label) {
+        for (Node node : nodes) {
+            if (node.getLabel().equals(label)) {
+                removeNode(node);
+                return;
+            }
+        }
+    }
+
     public String toAdjacencyListString() {
         String chaine = "";
 
