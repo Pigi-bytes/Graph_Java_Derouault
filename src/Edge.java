@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Edge {
     private Node source;
     private Node destination;
@@ -10,6 +12,32 @@ public class Edge {
     }
     
     public String toString() {
-        return "Edge [nodeA=" + source + ", nodeB=" + destination + ", weight=" + weight + "]";
+        return "" + source + destination + ":" + weight;
+    }
+
+    public Node getSource() {
+        return source;
+    }
+
+    public Node getDestination() {
+        return destination;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public int hashCode() {
+        return Objects.hash(source, destination, weight);
+    }
+
+    public boolean equals(Object otherEdge) {
+        if (this == otherEdge) return true;
+        if (otherEdge == null) return false;
+        Edge edge = (Edge) otherEdge;
+
+        return weight == edge.weight &&
+               Objects.equals(source, edge.source) &&
+               Objects.equals(destination, edge.destination);
     }
 }
