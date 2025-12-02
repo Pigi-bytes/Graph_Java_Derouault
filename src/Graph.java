@@ -39,9 +39,31 @@ public class Graph {
         addEdge(source, destination, 1);
     }
 
-    public String toString() {
-        return "Graph [nodes=" + nodes + ", edges=" + edges + ", directed=" + estOriente + "]";
+    public String toAdjacencyListString() {
+        String chaine = "";
+
+        for (Node node : this.nodes) {
+            chaine += node.getLabel() + ": ";
+            
+            for (Edge edge : this.edges) {
+                if (edge.getSource().equals(node)) {
+                    chaine +=  edge.getDestination() + "(" + edge.getWeight() + ") ";
+                }
+            }
+            chaine += "\n";
+        }
+        return chaine;
     }
 
-    
+    public String toEdgeListString() {
+        String chaine = "";
+        for (Edge edge : this.edges) {
+            chaine += edge.getSource().getLabel() + " " + edge.getDestination().getLabel() + " " + edge.getWeight() + "\n";
+        }
+        return chaine;
+    }
+
+    public String toString() {
+        return toAdjacencyListString();
+    }
 }
