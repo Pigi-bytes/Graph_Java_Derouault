@@ -66,6 +66,51 @@ public class Graph {
         }
     }
 
+    public void removeEdge(Node source, Node destination) {
+        Edge edgeToRemove = null;
+        for (Edge edge : edges) {
+            if (edge.getSource().equals(source) && edge.getDestination().equals(destination)) {
+                edgeToRemove = edge;
+                break;
+            }
+        }
+        
+        if (edgeToRemove != null) {
+            edges.remove(edgeToRemove);
+            
+            if (!estOriente) {
+                Edge reverseEdge = null;
+                for (Edge edge : edges) {
+                    if (edge.getSource().equals(destination) && edge.getDestination().equals(source)) {
+                        reverseEdge = edge;
+                        break;
+                    }
+                }
+                if (reverseEdge != null) {
+                    edges.remove(reverseEdge);
+                }
+            }
+        }
+    }
+
+    public void removeEdge(String sourceLabel, String destinationLabel) {
+        Node source = null;
+        Node destination = null;
+        
+        for (Node node : nodes) {
+            if (node.getLabel().equals(sourceLabel)) {
+                source = node;
+            }
+            if (node.getLabel().equals(destinationLabel)) {
+                destination = node;
+            }
+        }
+        
+        if (source != null && destination != null) {
+            removeEdge(source, destination);
+        }
+    }
+
     public String toAdjacencyListString() {
         String chaine = "";
 
