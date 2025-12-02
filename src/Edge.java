@@ -30,7 +30,7 @@ public class Edge {
 
     @Override
     public int hashCode() {
-        return Objects.hash(source, destination, weight);
+        return Objects.hash(source, destination);
     }
 
     @Override
@@ -39,8 +39,7 @@ public class Edge {
         if (otherEdge == null || getClass() != otherEdge.getClass()) return false;
         Edge edge = (Edge) otherEdge;
 
-        return weight == edge.weight &&
-               Objects.equals(source, edge.source) &&
+        return Objects.equals(source, edge.source) &&
                Objects.equals(destination, edge.destination);
     }
 }
