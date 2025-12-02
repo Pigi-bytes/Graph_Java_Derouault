@@ -40,6 +40,23 @@ public class Graph {
         addEdge(source, destination, 1);
     }
 
+    public void removeNode(Node node) {
+        if (!nodes.contains(node)) {
+            return;
+        }
+        
+        Set<Edge> edgesToRemove = new HashSet<>();
+        for (Edge edge : edges) {
+            if (edge.getSource().equals(node) || edge.getDestination().equals(node)) {
+                edgesToRemove.add(edge);
+            }
+        }
+
+        edges.removeAll(edgesToRemove);
+        
+        nodes.remove(node);
+    }
+    
     public String toAdjacencyListString() {
         String chaine = "";
 
