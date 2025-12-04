@@ -5,11 +5,23 @@ import java.util.List;
 
 public class GraphFile {
 
+    /**
+     * Types de format supportés pour l'import/export, utilisé pour les flags
+     */
     public enum format {
         EDGE,
         ADJACENCY
     }
 
+    /**
+     * Importe un graphe depuis un fichier
+     *
+     * Première ligne attendue : "EDGE [ORIENTE]" ou "ADJACENCY [ORIENTE]" avec [ORIENTE] = 1 ou 0
+     *
+     * @param filePath chemin du fichier à lire
+     * @return un Graph construit à partir du contenu du fichier
+     * @throws IOException si le fichier ne peut pas être lu ou si le flag d'orientation est invalide
+     */
     public static Graph importGraph(String filePath) throws IOException {   
         List<String> lines = Files.readAllLines(Paths.get(filePath));
         
@@ -38,6 +50,16 @@ public class GraphFile {
         return graph;
     }
 
+    /**
+     * Parse une liste d'arêtes
+     *
+     * Chaque ligne :
+     * - "LABEL" : ajoute un noeud isolé
+     * - "SOURCE DESTINATION WEIGHT" : ajoute une arête de SOURCE vers DESTINATION avec le poids WEIGHT
+     *
+     * @param graph objet Graph à remplir
+     * @param lines lignes du fichier correspondant au format EDGE
+     */
     private static void parseEdgeList(Graph graph, List<String> lines) {
         for (String line : lines) {
             // Séparer les éléments : "A B 5" -> ["A", "B", "5"]
@@ -56,10 +78,20 @@ public class GraphFile {
         }
     }
 
+    /**
+     * Parse une liste d'adjacence
+     *
+     * Chaque ligne : 
+     * - "SOURCE: DESTINATION1(WEIGHT1) DESTINATION2(WEIGHT2) ..." 
+     * - "SOURCE:" si aucun voisin
+     *
+     * @param graph objet Graph à remplir
+     * @param lines lignes du fichier correspondant au format ADJACENCY
+     */
     private static void parseAdjacencyList(Graph graph, List<String> lines) {
         for (String line : lines) {
 
-            // 1. Diviser en deux : "SOURCE : " et "DEST1(W1) DEST2(W2)..."
+            // Diviser en deux : "SOURCE : " et "DESTINATION1(W1) DESTINATION2(W2)..."
             String[] parts = line.split(":", 2);
             
             Node source = new Node(parts[0]);
@@ -87,6 +119,17 @@ public class GraphFile {
     }
 
 
+    /**
+     * Exporte un Graph vers un fichier
+     *
+     * Écrit d'abord la ligne de configuration "[FORMAT] [ORIENTE]" puis
+     * le contenu selon le format choisi 
+     * 
+     * @param graph graphe à exporter
+     * @param filePath chemin du fichier de sortie
+     * @param formatType format d'export (EDGE ou ADJACENCY)
+     * @throws IOException si l'écriture échoue
+     */
     public static void exportGraph(Graph graph, String filePath, format formatType) throws IOException {
         int orientationFlag = graph.getEstOriente() ? 1 : 0;
 
