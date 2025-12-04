@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -147,6 +149,35 @@ public class Graph {
             }
         }
         return chaine;
+    }
+
+
+    public List<Node> dfs(Node start) {
+        List<Node> result = new ArrayList<>();
+
+        for (Node n : nodes) {
+            if (n.equals(start)) {
+                start =  n;
+            }
+        }
+
+        Set<Node> visited = new HashSet<>();
+        dfsVisit(start, visited, result);
+        return result;
+    }
+
+    private void dfsVisit(Node u, Set<Node> visited, List<Node> result) {
+        visited.add(u);
+        result.add(u);
+
+        for (Edge e : edges) {
+            if (e.getSource().equals(u)) {
+                Node v = e.getDestination();
+                if (!visited.contains(v)) {
+                    dfsVisit(v, visited, result);
+                }
+            }
+        }
     }
 
     public boolean getEstOriente() {
