@@ -180,6 +180,50 @@ public class Graph {
         }
     }
 
+    public int outDegree(Node node) {
+        for (Node n : nodes) {
+            if (n.equals(node)) {
+                node = n;
+            }
+        }
+
+        int count = 0;
+        for (Edge e : edges) {
+            if (e.getSource().equals(node)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int inDegree(Node node) {
+        for (Node n : nodes) {
+            if (n.equals(node)) {
+                node = n;
+            }
+        }
+
+        int count = 0;
+        for (Edge e : edges) {
+            if (e.getDestination().equals(node)) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+
+    public int degree(Node node) {
+        if (!estOriente) {
+            // pour graphe non orienté, outDegree donne le degré (car on stocke les deux directions)
+            return outDegree(node);
+        } else {
+            return inDegree(node) + outDegree(node);
+        }
+    }
+
+
+
     public boolean getEstOriente() {
         return estOriente;
     }
