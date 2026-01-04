@@ -3,6 +3,7 @@ public class Client extends LocationNode {
 
     public Client(String label, String adress) {
         super(label);
+        this.adress = adress;
     }
     
     public String getAdress() { 
