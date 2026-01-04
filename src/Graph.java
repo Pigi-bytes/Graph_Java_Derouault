@@ -214,6 +214,14 @@ public abstract class Graph {
     public abstract boolean isOriente();
 
     /**
+     * Récupère la liste des voisins d'un noeud.
+     *
+     * @param node le noeud dont on cherche les voisins
+     * @return liste des noeuds voisins
+     */
+    public abstract List<Node> getNeighbors(Node node);
+
+    /**
      * Représentation texte du graphe
      *
      * @return string descriptive
