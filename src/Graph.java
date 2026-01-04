@@ -219,6 +219,16 @@ public abstract class Graph {
     public abstract List<Node> getNeighbors(Node node);
 
     /**
+     * Récupère l'arête connectant deux noeuds
+     * 
+     * @param source noeud de départ
+     * @param destination noeud d'arrivée
+     * @return l'objet Edge correspondant ou null
+     */
+    public abstract Edge getEdge(Node source, Node destination);
+
+
+    /**
      * Représentation texte du graphe
      *
      * @return string descriptive
