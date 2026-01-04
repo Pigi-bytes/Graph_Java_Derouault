@@ -8,7 +8,7 @@ public class App {
         Node nF = new Node("F");
         Node nZ = new Node("Z");
 
-        Graph complexGraph = new Graph(true);
+        Graph complexGraph = new GraphOriente();
 
         complexGraph.addNode(nA);
         complexGraph.addNode(nB);
