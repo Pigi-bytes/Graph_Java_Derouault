@@ -54,4 +54,37 @@ public class GraphNonOriente extends Graph {
         return count;
     }
 
+    @Override
+    public List<Node> getNeighbors(Node node) {
+        List<Node> neighbors = new ArrayList<>();
+        for (Edge edge : edges) {
+
+            // Si le noeud est la source, le voisin est la destination
+            if (edge.getSource().equals(node)) {
+                neighbors.add(edge.getDestination());
+            } 
+
+            // Si le noeud est la destination, le voisin est la source (car non orienté)
+            else if (edge.getDestination().equals(node)) {
+                neighbors.add(edge.getSource());
+            }
+        }
+        return neighbors;
+    }
+
+    @Override
+    public Edge getEdge(Node source, Node destination) {
+        for (Edge edge : edges) {
+            // On vérifie A vers B
+            if (edge.getSource().equals(source) && edge.getDestination().equals(destination)) {
+                return edge;
+            }
+            // On vérifie B vers A (car non orienté)
+            if (edge.getSource().equals(destination) && edge.getDestination().equals(source)) {
+                return edge;
+            }
+        }
+        return null;
+    }
+
 }

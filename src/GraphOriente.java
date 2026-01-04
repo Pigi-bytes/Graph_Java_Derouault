@@ -61,4 +61,14 @@ public class GraphOriente extends Graph {
     public int degree(Node node) {
         return inDegree(node) + outDegree(node);
     }
+
+    @Override
+    public Edge getEdge(Node source, Node destination) {
+        for (Edge edge : edges) {
+            if (edge.getSource().equals(source) && edge.getDestination().equals(destination)) {
+                return edge;
+            }
+        }
+        return null;
+    }
 }
