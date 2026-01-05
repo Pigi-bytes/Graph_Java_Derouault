@@ -1,51 +1,40 @@
 public class App {
-    public static void main(String[] args) throws Exception {
-        Node nA = new Node("A");
-        Node nB = new Node("B");
-        Node nC = new Node("C");
-        Node nD = new Node("D");
-        Node nE = new Node("E");
-        Node nF = new Node("F");
-        Node nZ = new Node("Z");
+    public static void main(String[] args) {
+        Graph city = new GraphNonOriente();
 
-        Graph complexGraph = new Graph(true);
+        Depot depot = new Depot("Central");
+        Restaurant pizza = new Restaurant("Luigi's", 15);
+        Restaurant sushi = new Restaurant("Sakura", 10);
+        Client client1 = new Client("Mme. Dupont", "12 rue de la Paix");
+        Client client2 = new Client("M. Martin", "5 avenue Victor Hugo");
+        Client client3 = new Client("Mme. Lopez", "3 place Bellecour");
+        LocationNode carrefour1 = new LocationNode("Carrefour Nord") {};
+        LocationNode carrefour2 = new LocationNode("Carrefour Sud") {};
 
-        complexGraph.addNode(nA);
-        complexGraph.addNode(nB);
-        complexGraph.addNode(nC);
-        complexGraph.addNode(nD);
-        complexGraph.addNode(nE);
-        complexGraph.addNode(nF);
-        complexGraph.addNode(nZ);
+        city.addNode(depot);
+        city.addNode(pizza);
+        city.addNode(sushi);
+        city.addNode(client1);
+        city.addNode(client2);
+        city.addNode(client3);
+        city.addNode(carrefour1);
+        city.addNode(carrefour2);
 
-        complexGraph.addEdge(nA, nB, 10);
-        complexGraph.addEdge(nB, nC, 3);
-        complexGraph.addEdge(nC, nA, 7);
+        city.addEdge(depot, carrefour1, 4);
+        city.addEdge(depot, carrefour2, 6);
+        city.addEdge(carrefour1, pizza, 3);
+        city.addEdge(carrefour1, sushi, 5);
+        city.addEdge(carrefour2, sushi, 2);
+        city.addEdge(carrefour2, client2, 4);
+        city.addEdge(pizza, client1, 7);
+        city.addEdge(sushi, client3, 8);
+        city.addEdge(carrefour1, client2, 6);
+        city.addEdge(carrefour2, client3, 3);
 
-        complexGraph.addEdge(nE, nF, 2);
-        complexGraph.addEdge(nF, nE, 4); 
+        DeliveryManager manager = new DeliveryManager(city);
 
-        complexGraph.addEdge(nC, nD, 50);
-        complexGraph.addEdge(nD, nF, 1);
-
-        complexGraph.addEdge(nB, nE, 15);
-        complexGraph.addEdge(nF, nD, 20);
-
-        System.out.println(complexGraph);
-
-        GraphFile.exportGraph(complexGraph, "edge_export.txt", GraphFile.format.EDGE);
-        GraphFile.exportGraph(complexGraph, "adj_export.txt", GraphFile.format.ADJACENCY);
-
-        Graph importAdj = GraphFile.importGraph("adj_export.txt");
-        System.out.println(importAdj.toAdjacencyListString());
-
-        Graph importEdge = GraphFile.importGraph("edge_export.txt");
-        System.out.println(importEdge);
-        System.out.println(importAdj);
-
-        System.out.println(importEdge.equals(importAdj));
-        System.out.println(importEdge.equals(complexGraph));
-
-        
+        manager.planifierLivraison(depot, pizza, client1);
+        manager.planifierLivraison(depot, sushi, client3);
+        manager.planifierLivraison(depot, sushi, client2);
     }
 }
