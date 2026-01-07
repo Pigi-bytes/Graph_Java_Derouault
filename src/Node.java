@@ -40,8 +40,8 @@ public class Node implements Serializable, Cloneable {
      */
     @Override
     public boolean equals(Object otherNode) {
-        if (this == otherNode) return true; 
-        if (otherNode == null || getClass() != otherNode.getClass()) return false;
+        if (this == otherNode) return true;
+        if (!(otherNode instanceof Node)) return false;
         Node node = (Node) otherNode;
         return Objects.equals(label, node.label);
     }
