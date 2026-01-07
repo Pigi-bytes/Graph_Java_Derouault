@@ -1,18 +1,17 @@
 public class Client extends LocationNode {
+    private String adress;
 
-    private String phoneNumber;
-
-    public Client(String id, String name, String address, String phoneNumber) {
-        super(id, name, address);
-        this.phoneNumber = phoneNumber;
+    public Client(String label, String adress) {
+        super(label);
+        this.adress = adress;
     }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
+    
+    public String getAdress() { 
+        return adress; 
     }
 
     @Override
-    public String getType() {
-        return "Client";
+    public String toString() {
+        return super.toString() + " Client";
     }
 }

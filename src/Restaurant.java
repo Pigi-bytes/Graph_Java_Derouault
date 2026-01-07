@@ -1,18 +1,17 @@
 public class Restaurant extends LocationNode {
+    private int preparation;
 
-    private int preparationTime; // minutes
-
-    public Restaurant(String id, String name, String address, int preparationTime) {
-        super(id, name, address);
-        this.preparationTime = preparationTime;
+    public Restaurant(String label, int prepTime) {
+        super(label);
+        this.preparation = prepTime;
     }
 
-    public int getPreparationTime() {
-        return preparationTime;
+    public int getPreparation() { 
+        return preparation; 
     }
-
+    
     @Override
-    public String getType() {
-        return "Restaurant";
+    public String toString() {
+        return super.toString() + " Resto";
     }
 }

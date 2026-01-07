@@ -1,5 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class GraphNonOriente extends Graph {
 
+    @Override
     public void addEdge(Node source, Node destination, int weight) {
         Edge newEdge = new Edge(source, destination, weight);
         Edge reverseEdge = new Edge(destination, source, weight);
@@ -14,6 +18,7 @@ public class GraphNonOriente extends Graph {
         edges.add(newEdge);
     }
 
+    @Override
     public void removeEdge(Node source, Node destination) {
         Edge edgeToRemove = null;
         for (Edge edge : edges) {
@@ -40,10 +45,12 @@ public class GraphNonOriente extends Graph {
         }
     }
 
+    @Override
     public boolean isOriente() {
         return false;
     }
 
+    @Override
     public int degree(Node node) {
         int count = 0;
         for (Edge e : edges) {

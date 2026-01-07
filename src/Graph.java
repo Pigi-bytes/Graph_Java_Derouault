@@ -190,12 +190,9 @@ public abstract class Graph {
         visited.add(u);
         result.add(u);
 
-        for (Edge e : edges) {
-            if (e.getSource().equals(u)) {
-                Node v = e.getDestination();
-                if (!visited.contains(v)) {
-                    dfsVisit(v, visited, result);
-                }
+        for (Node v : getNeighbors(u)) {
+            if (!visited.contains(v)) {
+                dfsVisit(v, visited, result);
             }
         }
     }

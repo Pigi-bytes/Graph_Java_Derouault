@@ -1,4 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class GraphOriente extends Graph {
+    
+    @Override
     public void addEdge(Node source, Node destination, int weight) {
         Edge newEdge = new Edge(source, destination, weight);
         if (edges.contains(newEdge)) {
@@ -10,6 +15,7 @@ public class GraphOriente extends Graph {
         edges.add(newEdge);
     }
 
+    @Override
     public void removeEdge(Node source, Node destination) {
         Edge edgeToRemove = null;
         for (Edge edge : edges) {
@@ -24,6 +30,7 @@ public class GraphOriente extends Graph {
         }
     }
 
+    @Override
     public boolean isOriente() {
         return true;
     }
@@ -58,6 +65,19 @@ public class GraphOriente extends Graph {
         return count;
     }
 
+    @Override
+    public List<Node> getNeighbors(Node node) {
+        List<Node> neighbors = new ArrayList<>();
+        for (Edge edge : edges) {
+            // On ne regarde que si le noeud est la SOURCE
+            if (edge.getSource().equals(node)) {
+                neighbors.add(edge.getDestination());
+            }
+        }
+        return neighbors;
+    }
+
+    @Override
     public int degree(Node node) {
         return inDegree(node) + outDegree(node);
     }
