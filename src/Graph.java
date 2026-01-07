@@ -10,7 +10,8 @@ public abstract class Graph {
     /**
      * Constructeur protégé pour les sous-classes
      */
-    protected Graph() {}
+    protected Graph() {
+    }
 
     /**
      * Ajoute un noeud au graphe
@@ -51,7 +52,6 @@ public abstract class Graph {
         }
 
         edges.removeAll(edgesToRemove);
-
         nodes.remove(node);
     }
 
@@ -61,11 +61,9 @@ public abstract class Graph {
      * @param node noeud à supprimer
      */
     public void removeNode(String label) {
-        for (Node node : this.nodes) {
-            if (node.getLabel().equals(label)) {
-                removeNode(node);
-                return;
-            }
+        Node node = getNode(label);
+        if (node != null) {
+            removeNode(node);
         }
     }
 
@@ -86,17 +84,8 @@ public abstract class Graph {
      * @param destination noeud destination
      */
     public void removeEdge(String sourceLabel, String destinationLabel) {
-        Node source = null;
-        Node destination = null;
-
-        for (Node node : nodes) {
-            if (node.getLabel().equals(sourceLabel)) {
-                source = node;
-            }
-            if (node.getLabel().equals(destinationLabel)) {
-                destination = node;
-            }
-        }
+        Node source = getNode(sourceLabel);
+        Node destination = getNode(destinationLabel);
 
         if (source != null && destination != null) {
             removeEdge(source, destination);
@@ -198,6 +187,21 @@ public abstract class Graph {
     }
 
     /**
+     * Récupère un noeud à partir de son label.
+     *
+     * @param label le label du noeud recherché
+     * @return le noeud correspondant ou null s'il n'existe pas
+     */
+    public Node getNode(String label) {
+        for (Node node : nodes) {
+            if (node.getLabel().equals(label)) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Calcule le degré du noeud
      *
      * @param node noeud ciblé
@@ -221,12 +225,11 @@ public abstract class Graph {
     /**
      * Récupère l'arête connectant deux noeuds
      * 
-     * @param source noeud de départ
+     * @param source      noeud de départ
      * @param destination noeud d'arrivée
      * @return l'objet Edge correspondant ou null
      */
     public abstract Edge getEdge(Node source, Node destination);
-
 
     /**
      * Représentation texte du graphe

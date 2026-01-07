@@ -11,11 +11,6 @@ public class DeliveryManager {
 
 
     public void planifierLivraison(Depot depart, Restaurant resto, Client client) {
-        System.out.println("Départ      : " + depart.getLabel());
-        System.out.println("Restaurant  : " + resto.getLabel());
-        System.out.println("Client      : " + client.getLabel());
-
-
         Map<String, Object> trajet1 = algo.findShortestPath(grapheVille, depart, resto);
         int cout1 = (int) trajet1.get("cout");
         java.util.List<Node> chemin1 = (java.util.List<Node>) trajet1.get("chemin");
@@ -43,7 +38,7 @@ public class DeliveryManager {
         System.out.println("");
         System.out.println("Trajet total       : " + (cout1 + cout2) + " min");
         System.out.println("Préparation repas  : " + resto.getPreparation() + " min");
-        System.out.println("TEMPS TOTAL ESTIMÉ : " + cout1 + resto.getPreparation() + cout2 + " min");
+        System.out.println("TEMPS TOTAL ESTIMÉ : " + (cout1 + resto.getPreparation() + cout2) + " min");
 
     }
 
