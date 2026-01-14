@@ -14,6 +14,12 @@ Il consiste à modéliser, implémenter et manipuler des graphes orientés ou no
 
 - Java (JDK 8 ou supérieur)
 
+## Setup
+```bash
+git clone https://github.com/Pigi-bytes/Graph_Java_Derouault.git
+cd Graph_Java_Derouault
+```
+
 ## Compilation et exécution
 
 Pour compiler :
