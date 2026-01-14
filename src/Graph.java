@@ -204,7 +204,7 @@ public abstract class Graph implements Serializable, Cloneable {
                 return node;
             }
         }
-        return null;
+        throw new NodeNotFoundException("Node with label '" + label + "' not found.");
     }
 
     /**

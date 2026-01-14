@@ -10,7 +10,7 @@ public class App {
 
         if (choix.equals("c")) {
             city = Graph.loadGraph("city.ser");
-            System.out.println("Graphe chargé :\n" + city.toAdjacencyListString());
+            System.out.println("Graphe chargé :\n" + city);
         } else {
             city = new GraphNonOriente();
 
@@ -65,11 +65,25 @@ public class App {
 
         System.out.println("\n");
         manager.planifierLivraison(depotUsed, resto2Used, clientBUsed);
-        
+
         System.out.println("\n");
         manager.planifierLivraison(depotUsed, resto1Used, clientCUsed);
 
         System.out.println("\n");
         manager.planifierLivraison(depotUsed, resto2Used, clientDUsed);
+
+        System.out.println("\n");
+        try {
+            city.getNode("InexistantNode");
+        } catch (NodeNotFoundException e) {
+            System.out.println("Test NodeNotFoundException : " + e.getMessage());
+        }
+
+        // Test NetworkNotConnectedException
+        Client clientIsolated = new Client("ClientIsolated", "5 rue E");
+        city.addNode(clientIsolated);
+
+        System.out.println("\nTest NetworkNotConnectedException :");
+        manager.planifierLivraison(depotUsed, resto1Used, clientIsolated);
     }
 }
