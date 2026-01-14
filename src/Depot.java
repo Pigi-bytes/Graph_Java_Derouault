@@ -4,6 +4,10 @@ public class Depot extends LocationNode {
     }
     
     @Override
+    /**
+     * Retourne une représentation textuelle du dépôt
+     * @return chaîne représentant le dépôt
+     */
     public String toString() {
         return super.toString() + " (Depot)";
     }

@@ -4,6 +4,12 @@ import java.util.List;
 public class GraphOriente extends Graph {
     
     @Override
+    /**
+     * Ajoute une arête orientée entre deux noeuds avec un poids donné
+     * @param source noeud source
+     * @param destination noeud destination
+     * @param weight poids de l'arête
+     */
     public void addEdge(Node source, Node destination, int weight) {
         Edge newEdge = new Edge(source, destination, weight);
         if (edges.contains(newEdge)) {
@@ -16,6 +22,11 @@ public class GraphOriente extends Graph {
     }
 
     @Override
+    /**
+     * Supprime l'arête orientée entre deux noeuds
+     * @param source noeud source
+     * @param destination noeud destination
+     */
     public void removeEdge(Node source, Node destination) {
         Edge edgeToRemove = null;
         for (Edge edge : edges) {
@@ -31,6 +42,10 @@ public class GraphOriente extends Graph {
     }
 
     @Override
+    /**
+     * Indique si le graphe est orienté (toujours vrai ici)
+     * @return true
+     */
     public boolean isOriente() {
         return true;
     }
@@ -66,6 +81,11 @@ public class GraphOriente extends Graph {
     }
 
     @Override
+    /**
+     * Retourne la liste des voisins accessibles depuis un noeud
+     * @param node noeud dont on veut les voisins
+     * @return liste des noeuds voisins
+     */
     public List<Node> getNeighbors(Node node) {
         List<Node> neighbors = new ArrayList<>();
         for (Edge edge : edges) {
@@ -78,11 +98,22 @@ public class GraphOriente extends Graph {
     }
 
     @Override
+    /**
+     * Calcule le degré total (entrant + sortant) d'un noeud
+     * @param node noeud ciblé
+     * @return somme des degrés entrant et sortant
+     */
     public int degree(Node node) {
         return inDegree(node) + outDegree(node);
     }
 
     @Override
+    /**
+     * Retourne l'arête orientée reliant deux noeuds
+     * @param source noeud source
+     * @param destination noeud destination
+     * @return arête correspondante ou null
+     */
     public Edge getEdge(Node source, Node destination) {
         for (Edge edge : edges) {
             if (edge.getSource().equals(source) && edge.getDestination().equals(destination)) {

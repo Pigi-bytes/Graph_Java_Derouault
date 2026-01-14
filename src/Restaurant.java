@@ -6,11 +6,19 @@ public class Restaurant extends LocationNode {
         this.preparation = prepTime;
     }
 
+    /**
+     * Retourne le temps de préparation du restaurant
+     * @return temps de préparation en minutes
+     */
     public int getPreparation() { 
         return preparation; 
     }
     
     @Override
+    /**
+     * Retourne une représentation textuelle du restaurant
+     * @return chaîne représentant le restaurant
+     */
     public String toString() {
         return "Restaurant " + super.toString() + " (" + this.getPreparation() + " min)" ;
     }

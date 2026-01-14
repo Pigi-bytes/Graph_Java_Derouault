@@ -56,6 +56,11 @@ public class Node implements Serializable, Cloneable {
         return Objects.hash(label);
     }
 
+    /**
+     * Clone le noeud courant
+     * @return une copie du noeud
+     * @throws CloneNotSupportedException si le clonage échoue
+     */
     @Override
     public Node clone() throws CloneNotSupportedException {
         return (Node) super.clone();

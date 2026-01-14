@@ -4,6 +4,12 @@ import java.util.List;
 public class GraphNonOriente extends Graph {
 
     @Override
+    /**
+     * Ajoute une arête non orientée entre deux noeuds avec un poids donné
+     * @param source noeud source
+     * @param destination noeud destination
+     * @param weight poids de l'arête
+     */
     public void addEdge(Node source, Node destination, int weight) {
         Edge newEdge = new Edge(source, destination, weight);
         Edge reverseEdge = new Edge(destination, source, weight);
@@ -19,6 +25,11 @@ public class GraphNonOriente extends Graph {
     }
 
     @Override
+    /**
+     * Supprime l'arête (et sa réciproque) entre deux noeuds
+     * @param source noeud source
+     * @param destination noeud destination
+     */
     public void removeEdge(Node source, Node destination) {
         Edge edgeToRemove = null;
         for (Edge edge : edges) {
@@ -46,11 +57,20 @@ public class GraphNonOriente extends Graph {
     }
 
     @Override
+    /**
+     * Indique si le graphe est orienté (toujours faux ici)
+     * @return false
+     */
     public boolean isOriente() {
         return false;
     }
 
     @Override
+    /**
+     * Calcule le degré d'un noeud
+     * @param node noeud dont on veut le degré
+     * @return degré du noeud
+     */
     public int degree(Node node) {
         int count = 0;
         for (Edge e : edges) {
@@ -62,6 +82,11 @@ public class GraphNonOriente extends Graph {
     }
 
     @Override
+    /**
+     * Retourne la liste des voisins d'un noeud
+     * @param node noeud dont on veut les voisins
+     * @return liste des noeuds voisins
+     */
     public List<Node> getNeighbors(Node node) {
         List<Node> neighbors = new ArrayList<>();
         for (Edge edge : edges) {
@@ -80,6 +105,12 @@ public class GraphNonOriente extends Graph {
     }
 
     @Override
+    /**
+     * Retourne l'arête reliant deux noeuds (dans un sens ou l'autre)
+     * @param source noeud source
+     * @param destination noeud destination
+     * @return arête correspondante ou null
+     */
     public Edge getEdge(Node source, Node destination) {
         for (Edge edge : edges) {
             // On vérifie A vers B

@@ -6,11 +6,19 @@ public class Client extends LocationNode {
         this.adress = adress;
     }
     
+    /**
+     * Retourne l'adresse du client
+     * @return l'adresse du client
+     */
     public String getAdress() { 
         return adress; 
     }
 
     @Override
+    /**
+     * Retourne une représentation textuelle du client
+     * @return chaîne représentant le client
+     */
     public String toString() {
         return "Client " + super.toString() + " ; " + this.adress;
     }

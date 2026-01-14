@@ -10,6 +10,13 @@ public class DeliveryManager {
     }
 
 
+    /**
+     * Planifie la livraison d'un repas du dépôt au client via le restaurant
+     * Affiche les trajets et les temps estimés
+     * @param depart dépôt de départ
+     * @param resto restaurant de préparation
+     * @param client client destinataire
+     */
     public void planifierLivraison(Depot depart, Restaurant resto, Client client) {
         Map<String, Object> trajet1 = algo.findShortestPath(grapheVille, depart, resto);
         int cout1 = (int) trajet1.get("cout");
@@ -42,6 +49,10 @@ public class DeliveryManager {
 
     }
 
+    /**
+     * Affiche le chemin sous forme de labels séparés par des flèches
+     * @param chemin liste ordonnée des noeuds à afficher
+     */
     private void afficherChemin(java.util.List<Node> chemin) {
         for (int i = 0; i < chemin.size(); i++) {
             System.out.print(chemin.get(i).getLabel());
