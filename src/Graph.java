@@ -9,8 +9,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Classe abstraite représentant un graphe
+ */
 public abstract class Graph implements Serializable, Cloneable {
+    /**
+     * Ensemble des noeuds du graphe
+     */
     protected final Set<Node> nodes = new HashSet<>();
+    /**
+     * Ensemble des arêtes du graphe
+     */
     protected final Set<Edge> edges = new HashSet<>();
 
     /**
@@ -296,6 +305,5 @@ public abstract class Graph implements Serializable, Cloneable {
             return (Graph) graph.readObject();
         }
     }
-
 
 }

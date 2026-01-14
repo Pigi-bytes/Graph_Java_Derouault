@@ -1,6 +1,18 @@
+/**
+ * Représente un client dans le graphe.
+ */
 public class Client extends LocationNode {
+    /**
+     * Adresse du client.
+     */
     private final String adress;
 
+    /**
+     * Construit un client avec un label et une adresse.
+     * 
+     * @param label  Nom du client
+     * @param adress Adresse du client
+     */
     public Client(String label, String adress) {
         super(label);
         this.adress = adress;

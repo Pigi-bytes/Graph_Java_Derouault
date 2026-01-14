@@ -1,4 +1,12 @@
+/**
+ * Représente un dépôt dans le graphe.
+ */
 public class Depot extends LocationNode {
+    /**
+     * Construit un dépôt avec le label donné.
+     * 
+     * @param label Nom du dépôt
+     */
     public Depot(String label) {
         super(label);
     }

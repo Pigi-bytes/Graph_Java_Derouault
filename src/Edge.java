@@ -1,10 +1,22 @@
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Représente une arête pondéré du graph
+ */
 public class Edge implements Serializable, Cloneable {
 
+    /**
+     * Noeud source de l'arête.
+     */
     private final Node source;
+    /**
+     * Noeud destination de l'arête.
+     */
     private final Node destination;
+    /**
+     * Poids de l'arête.
+     */
     private final int weight;
 
     /**

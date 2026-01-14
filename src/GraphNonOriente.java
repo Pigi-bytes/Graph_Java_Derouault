@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implémentation d'un graphe non orienté
+ */
 public class GraphNonOriente extends Graph {
 
     @Override

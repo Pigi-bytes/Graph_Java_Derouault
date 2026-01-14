@@ -1,7 +1,19 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Classe principale de l'application de gestion de graphes de livraison.
+ */
 public class App {
+    /**
+     * Point d'entrée du programme.
+     *
+     * @param args Arguments de la ligne de commande (non utilisés)
+     * @throws IOException            Si une erreur d'entrée/sortie survient lors du
+     *                                chargement ou de la sauvegarde du graphe
+     * @throws ClassNotFoundException Si la classe du graphe sérialisé n'est pas
+     *                                trouvée
+     */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Voulez-vous (s)auvegarder ou (c)harger le graphe ? [s/c] : ");

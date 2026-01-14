@@ -1,7 +1,15 @@
+/**
+ * Gère la planification des livraisons dans le graphe
+ */
 public class DeliveryManager {
     private final Graph grapheVille;
     private final DijkstraAlgorithm algo;
 
+    /**
+     * Crée un gestionnaire de livraison pour un graphe donné
+     * 
+     * @param graphe Graphe de la ville
+     */
     public DeliveryManager(Graph graphe) {
         this.grapheVille = graphe;
         this.algo = new DijkstraAlgorithm();

@@ -3,8 +3,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Implémente l'algorithme de Dijkstra pour le graphe
+ */
 public class DijkstraAlgorithm {
-
+    /**
+     * Trouve le plus court chemin entre deux noeuds dans un graphe
+     * 
+     * @param graph Graphe à parcourir
+     * @param start Noeud de départ
+     * @param end   Noeud d'arrivée
+     * @return Un objet chemin contenant la liste des noeuds et le coût total
+     * @throws NetworkNotConnectedException Si aucun chemin n'existe entre start et
+     *                                      end
+     */
     public chemin findShortestPath(Graph graph, Node start, Node end) throws NetworkNotConnectedException {
         Map<Node, Integer> distance = new HashMap<>();
         Map<Node, Node> precedent = new HashMap<>();

@@ -3,6 +3,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * Utilitaires pour l'import/export de graphes depuis/vers des fichiers
+ */
 public class GraphFile {
 
     /**

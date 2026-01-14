@@ -1,8 +1,19 @@
 import java.util.*;
 
+/**
+ * Fournit des méthodes d'analyse sur le graphe (connexité et ponts)
+ */
 public class NetworkAnalyzer {
+    /**
+     * Graphe à analyser
+     */
     private final Graph graph;
 
+    /**
+     * Construit un analyseur pour le graphe donné.
+     * 
+     * @param graph Graphe à analyser
+     */
     public NetworkAnalyzer(Graph graph) {
         this.graph = graph;
     }
