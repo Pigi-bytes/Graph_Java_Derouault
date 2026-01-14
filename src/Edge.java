@@ -1,6 +1,8 @@
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Edge {
+public class Edge implements Serializable, Cloneable {
+
     private final Node source;
     private final Node destination;
     private final int weight;
@@ -77,5 +79,15 @@ public class Edge {
 
         return Objects.equals(source, edge.source) &&
                Objects.equals(destination, edge.destination);
+    }
+
+    /**
+     * Clone l'arête avec de nouveaux noeuds source et destination.
+     * @param newSource nouveau noeud source
+     * @param newDestination nouveau noeud destination
+     * @return nouvelle arête clonée
+     */
+    public Edge clone(Node newSource, Node newDestination) {
+        return new Edge(newSource, newDestination, this.weight);
     }
 }
