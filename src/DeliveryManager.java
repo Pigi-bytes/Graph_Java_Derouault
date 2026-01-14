@@ -1,5 +1,3 @@
-import java.util.Map;
-
 public class DeliveryManager {
     private final Graph grapheVille;
     private final DijkstraAlgorithm algo;
@@ -9,26 +7,26 @@ public class DeliveryManager {
         this.algo = new DijkstraAlgorithm();
     }
 
-
     /**
      * Planifie la livraison d'un repas du dépôt au client via le restaurant
      * Affiche les trajets et les temps estimés
+     * 
      * @param depart dépôt de départ
-     * @param resto restaurant de préparation
+     * @param resto  restaurant de préparation
      * @param client client destinataire
      */
     public void planifierLivraison(Depot depart, Restaurant resto, Client client) {
         try {
-            Map<String, Object> trajet1 = algo.findShortestPath(grapheVille, depart, resto);
-            int cout1 = (int) trajet1.get("cout");
-            java.util.List<Node> chemin1 = (java.util.List<Node>) trajet1.get("chemin");
+            chemin trajet1 = algo.findShortestPath(grapheVille, depart, resto);
+            int cout1 = trajet1.cout;
+            java.util.List<Node> chemin1 = trajet1.chemin;
 
             System.out.println("Vers le restaurant (" + cout1 + " min)");
             afficherChemin(chemin1);
 
-            Map<String, Object> trajet2 = algo.findShortestPath(grapheVille, resto, client);
-            int cout2 = (int) trajet2.get("cout");
-            java.util.List<Node> chemin2 = (java.util.List<Node>) trajet2.get("chemin");
+            chemin trajet2 = algo.findShortestPath(grapheVille, resto, client);
+            int cout2 = trajet2.cout;
+            java.util.List<Node> chemin2 = trajet2.chemin;
 
             System.out.println("Vers le client (" + cout2 + " min)");
             afficherChemin(chemin2);
@@ -44,12 +42,14 @@ public class DeliveryManager {
 
     /**
      * Affiche le chemin sous forme de labels séparés par des flèches
+     * 
      * @param chemin liste ordonnée des noeuds à afficher
      */
     private void afficherChemin(java.util.List<Node> chemin) {
         for (int i = 0; i < chemin.size(); i++) {
             System.out.print(chemin.get(i).getLabel());
-            if (i < chemin.size() - 1) System.out.print(" -> ");
+            if (i < chemin.size() - 1)
+                System.out.print(" -> ");
         }
         System.out.println();
     }

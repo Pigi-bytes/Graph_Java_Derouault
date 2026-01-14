@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class DijkstraAlgorithm {
 
-    public Map<String, Object> findShortestPath(Graph graph, Node start, Node end) throws NetworkNotConnectedException {
+    public chemin findShortestPath(Graph graph, Node start, Node end) throws NetworkNotConnectedException {
         Map<Node, Integer> distance = new HashMap<>();
         Map<Node, Node> precedent = new HashMap<>();
         List<Node> aVisiter = new ArrayList<>();
@@ -48,18 +48,14 @@ public class DijkstraAlgorithm {
             throw new NetworkNotConnectedException("Impossible d'atteindre la destination.");
         }
 
-        Map<String, Object> resultat = new HashMap<>();
-        resultat.put("cout", endDistance);
-
         List<Node> chemin = new ArrayList<>();
         Node courant = end;
         while (courant != null) {
             chemin.add(0, courant);
             courant = precedent.get(courant);
         }
-        resultat.put("chemin", chemin);
 
-        return resultat;
+        return new chemin(endDistance, chemin);
     }
 
     private Node NodeLePlusProche(List<Node> nodes, Map<Node, Integer> distances) {
