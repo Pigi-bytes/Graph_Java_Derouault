@@ -1,9 +1,15 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public abstract class Graph {
+public abstract class Graph implements Serializable, Cloneable {
     protected final Set<Node> nodes = new HashSet<>();
     protected final Set<Edge> edges = new HashSet<>();
 
@@ -240,5 +246,56 @@ public abstract class Graph {
     public String toString() {
         return "Graph [nodes=" + nodes + ", edges=" + edges + "] + orientation ;" + isOriente();
     }
+
+    /**
+    * Clone profond du graphe
+    * @return une copie indépendante du graphe
+    */
+    @Override
+    public Graph clone() throws CloneNotSupportedException {
+        Graph cloned = (Graph) super.clone();
+        cloned.nodes.clear();
+        cloned.edges.clear();
+
+        java.util.Map<Node, Node> nodeMap = new java.util.HashMap<>();
+        for (Node node : this.nodes) {
+            Node clonedNode = node.clone();
+            nodeMap.put(node, clonedNode);
+            cloned.addNode(clonedNode);
+        }
+
+        // Deep clone des arêtes
+        for (Edge edge : this.edges) {
+            Node clonedSource = nodeMap.get(edge.getSource());
+            Node clonedDestination = nodeMap.get(edge.getDestination());
+            cloned.addEdge(clonedSource, clonedDestination, edge.getWeight());
+        }
+        return cloned;
+    }
+
+    /**
+     * Sauvegarde le graphe dans un fichier (sérialisation)
+     * @param filename nom du fichier
+     * @throws IOException en cas d'erreur d'écriture
+     */
+    public void saveGraph(String filename) throws IOException {
+        try (ObjectOutputStream graph = new ObjectOutputStream(new FileOutputStream(filename))) {
+            graph.writeObject(this);
+        }
+    }
+
+    /**
+     * Charge un graphe depuis un fichier (sérialisation)
+     * @param filename nom du fichier
+     * @return le graphe chargé
+     * @throws IOException en cas d'erreur de lecture
+     * @throws ClassNotFoundException si la classe n'est pas trouvée
+     */
+    public static Graph loadGraph(String filename) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream graph = new ObjectInputStream(new FileInputStream(filename))) {
+            return (Graph) graph.readObject();
+        }
+    }
+
 
 }
