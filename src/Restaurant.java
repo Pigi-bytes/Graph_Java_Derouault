@@ -1,5 +1,5 @@
 public class Restaurant extends LocationNode {
-    private int preparation;
+    private final int preparation;
 
     public Restaurant(String label, int prepTime) {
         super(label);
@@ -12,6 +12,6 @@ public class Restaurant extends LocationNode {
     
     @Override
     public String toString() {
-        return super.toString() + " Resto";
+        return "Restaurant " + super.toString() + " (" + this.getPreparation() + " min)" ;
     }
 }

@@ -1,5 +1,5 @@
 public class Client extends LocationNode {
-    private String adress;
+    private final String adress;
 
     public Client(String label, String adress) {
         super(label);
@@ -12,6 +12,6 @@ public class Client extends LocationNode {
 
     @Override
     public String toString() {
-        return super.toString() + " Client";
+        return "Client " + super.toString() + " ; " + this.adress;
     }
 }
