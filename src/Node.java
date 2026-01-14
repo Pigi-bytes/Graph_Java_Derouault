@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Node {
+public class Node implements Serializable, Cloneable {
     private final String label;
 
     /**
@@ -53,6 +54,11 @@ public class Node {
     @Override
     public int hashCode() {
         return Objects.hash(label);
+    }
+
+    @Override
+    public Node clone() throws CloneNotSupportedException {
+        return (Node) super.clone();
     }
 }
 
