@@ -10,7 +10,7 @@ public class App {
 
         if (choix.equals("c")) {
             city = Graph.loadGraph("city.ser");
-            System.out.println("Graphe chargé :\n" + city);
+            System.out.println("Graphe chargé :\n" + city.toAdjacencyListString());
         } else {
             city = new GraphNonOriente();
 
@@ -60,30 +60,34 @@ public class App {
         Client clientDUsed = (Client) city.getNode("ClientD");
         DeliveryManager manager = new DeliveryManager(city);
 
-        System.out.println("\n");
         manager.planifierLivraison(depotUsed, resto1Used, clientAUsed);
 
-        System.out.println("\n");
+        System.out.println("");
         manager.planifierLivraison(depotUsed, resto2Used, clientBUsed);
 
-        System.out.println("\n");
+        System.out.println("");
         manager.planifierLivraison(depotUsed, resto1Used, clientCUsed);
 
-        System.out.println("\n");
+        System.out.println("");
         manager.planifierLivraison(depotUsed, resto2Used, clientDUsed);
 
-        System.out.println("\n");
+        System.out.println("");
+        NetworkAnalyzer analyzer = new NetworkAnalyzer(city);
+        System.out.println("Le graphe est connexe ? " + analyzer.estConnexe());
+        System.out.println("Ponts du graphe : " + analyzer.trouverLesPonts());
+
+        System.out.println("");
+
         try {
-            city.getNode("InexistantNode");
+            city.getNode("jlb lfjklndfljknkl");
         } catch (NodeNotFoundException e) {
             System.out.println("Test NodeNotFoundException : " + e.getMessage());
         }
 
-        // Test NetworkNotConnectedException
-        Client clientIsolated = new Client("ClientIsolated", "5 rue E");
-        city.addNode(clientIsolated);
+        Client clientPerdu = new Client("clientPerdu", "5 rue E");
+        city.addNode(clientPerdu);
 
         System.out.println("\nTest NetworkNotConnectedException :");
-        manager.planifierLivraison(depotUsed, resto1Used, clientIsolated);
+        manager.planifierLivraison(depotUsed, resto1Used, clientPerdu);
     }
 }
