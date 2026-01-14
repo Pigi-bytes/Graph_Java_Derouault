@@ -27,7 +27,7 @@ public class Edge implements Serializable, Cloneable {
      */
     @Override
     public String toString() {
-        return "" + source + destination + ":" + weight;
+        return "" + source + "-" + destination + ":" + weight;
     }
 
     /**

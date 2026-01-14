@@ -9,6 +9,6 @@ public class Depot extends LocationNode {
      * @return chaîne représentant le dépôt
      */
     public String toString() {
-        return super.toString() + " (Depot)";
+        return super.toString();
     }
 }

@@ -17,9 +17,10 @@ public class Restaurant extends LocationNode {
     @Override
     /**
      * Retourne une représentation textuelle du restaurant
+     * 
      * @return chaîne représentant le restaurant
      */
     public String toString() {
-        return "Restaurant " + super.toString() + " (" + this.getPreparation() + " min)" ;
+        return super.toString();
     }
 }

@@ -20,6 +20,6 @@ public class Client extends LocationNode {
      * @return chaîne représentant le client
      */
     public String toString() {
-        return "Client " + super.toString() + " ; " + this.adress;
+        return super.toString() + " ; " + this.adress;
     }
 }
