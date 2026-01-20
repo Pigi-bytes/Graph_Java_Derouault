@@ -6,6 +6,13 @@ import java.util.Scanner;
  */
 public class App {
     /**
+     * Constructeur privé pour empêcher l'instanciation de la classe utilitaire.
+     */
+    private App() {
+        // Constructeur privé
+    }
+
+    /**
      * Point d'entrée du programme.
      *
      * @param args Arguments de la ligne de commande (non utilisés)

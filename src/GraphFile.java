@@ -7,12 +7,23 @@ import java.util.List;
  * Utilitaires pour l'import/export de graphes depuis/vers des fichiers
  */
 public class GraphFile {
+    /**
+     * Constructeur privé pour empêcher l'instanciation de la classe utilitaire.
+     */
+    private GraphFile() {
+        // Constructeur privé
+    }
 
     /**
      * Types de format supportés pour l'import/export, utilisé pour les flags
      */
+    /**
+     * Types de format supportés pour l'import/export.
+     */
     public enum format {
+        /** Format liste d'arêtes. */
         EDGE,
+        /** Format liste d'adjacence. */
         ADJACENCY
     }
 

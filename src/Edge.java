@@ -39,10 +39,11 @@ public class Edge implements Serializable, Cloneable {
      */
     @Override
     public String toString() {
-        return "" + source + "-" + destination + ":" + weight;
+        return "" + source + destination + ":" + weight;
     }
 
     /**
+     * Retourne le noeud source de l'arête.
      * @return le noeud source
      */
     public Node getSource() {
@@ -50,6 +51,7 @@ public class Edge implements Serializable, Cloneable {
     }
 
     /**
+     * Retourne le noeud destination de l'arête.
      * @return le noeud destination
      */
     public Node getDestination() {
@@ -57,6 +59,7 @@ public class Edge implements Serializable, Cloneable {
     }
 
     /**
+     * Retourne le poids de l'arête.
      * @return le poids (weight) de l'arête
      */
     public int getWeight() {

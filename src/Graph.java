@@ -37,6 +37,12 @@ public abstract class Graph implements Serializable, Cloneable {
         nodes.add(node);
     }
 
+    /**
+     * Ajoute une arête pondérée entre deux noeuds.
+     * @param source noeud source
+     * @param destination noeud destination
+     * @param weight poids de l'arête
+     */
     public abstract void addEdge(Node source, Node destination, int weight);
 
     /**
@@ -73,7 +79,7 @@ public abstract class Graph implements Serializable, Cloneable {
     /**
      * Supprime un noeud identifier par son label et toutes les arêtes connecté
      *
-     * @param node noeud à supprimer
+     * @param label noeud à supprimer
      */
     public void removeNode(String label) {
         Node node = getNode(label);
@@ -86,7 +92,7 @@ public abstract class Graph implements Serializable, Cloneable {
      * Supprime l'arête (source vers destination)
      * Pour un graphe non orienté, la reciproce est également supprimée
      *
-     * @param source      noeud source
+     * @param source noeud source
      * @param destination noeud destination
      */
     public abstract void removeEdge(Node source, Node destination);
@@ -95,8 +101,8 @@ public abstract class Graph implements Serializable, Cloneable {
      * Supprime l'arête identifier par les labels de (source vers destination)
      * Pour un graphe non orienté, la reciproce est également supprimée
      *
-     * @param source      noeud source
-     * @param destination noeud destination
+     * @param sourceLabel noeud source
+     * @param destinationLabel noeud destination
      */
     public void removeEdge(String sourceLabel, String destinationLabel) {
         Node source = getNode(sourceLabel);
@@ -225,6 +231,7 @@ public abstract class Graph implements Serializable, Cloneable {
     public abstract int degree(Node node);
 
     /**
+     * Indique si le graphe est orienté.
      * @return true si le graphe est orienté
      */
     public abstract boolean isOriente();

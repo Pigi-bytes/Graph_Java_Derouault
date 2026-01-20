@@ -1,7 +1,13 @@
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Représente un noeud du graphe (sommet).
+ */
 public class Node implements Serializable, Cloneable {
+    /**
+     * Label du noeud.
+     */
     private final String label;
 
     /**
@@ -40,8 +46,8 @@ public class Node implements Serializable, Cloneable {
      */
     @Override
     public boolean equals(Object otherNode) {
-        if (this == otherNode) return true;
-        if (!(otherNode instanceof Node)) return false;
+        if (this == otherNode) return true; 
+        if (otherNode == null || getClass() != otherNode.getClass()) return false;
         Node node = (Node) otherNode;
         return Objects.equals(label, node.label);
     }

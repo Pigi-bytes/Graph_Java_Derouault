@@ -2,9 +2,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implémentation d'un graphe non orienté
+ * Graphe non orienté (arêtes dans les deux sens).
  */
 public class GraphNonOriente extends Graph {
+    /**
+     * Constructeur par défaut de GraphNonOriente.
+     */
+    public GraphNonOriente() {
+        super();
+    }
 
     @Override
     /**

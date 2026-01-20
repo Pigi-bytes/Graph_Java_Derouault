@@ -8,6 +8,13 @@ import java.util.Map;
  */
 public class DijkstraAlgorithm {
     /**
+     * Constructeur par défaut de DijkstraAlgorithm.
+     */
+    public DijkstraAlgorithm() {
+        // Constructeur par défaut
+    }
+
+    /**
      * Trouve le plus court chemin entre deux noeuds dans un graphe
      * 
      * @param graph Graphe à parcourir

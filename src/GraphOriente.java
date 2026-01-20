@@ -2,10 +2,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implémentation d'un graphe orienté
+ * Graphe orienté (arêtes à sens unique).
  */
 public class GraphOriente extends Graph {
-    
+    /**
+     * Constructeur par défaut de GraphOriente.
+     */
+    public GraphOriente() {
+        super();
+    }
+
     @Override
     /**
      * Ajoute une arête orientée entre deux noeuds avec un poids donné
